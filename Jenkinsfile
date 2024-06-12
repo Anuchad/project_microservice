@@ -15,7 +15,7 @@ pipeline {
             steps {
                script {
                     currentBuild.displayName = "Build Test"
-                    currentBuild.description = "Test jenkins for build test."
+                    currentBuild.description = "Test jenkins for build test. action = ${params.CHOICE}"
                     echo "setname success"
                 }
             }
