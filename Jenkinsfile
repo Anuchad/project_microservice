@@ -10,6 +10,9 @@ pipeline {
     parameters {
         choice(name: 'CHOICE', choices: ['git version', 'git status', 'git pull'], description: 'Select action')
     }
+    environment {
+      REMOTE_CREDS = credentials('remote-ssh')
+    }
     stages {
         stage('Set Name build') {
             steps {
@@ -17,6 +20,10 @@ pipeline {
                     currentBuild.displayName = "Build Test"
                     currentBuild.description = "Test jenkins for build test. action = ${params.CHOICE}"
                     echo "setname success"
+                    echo "===================="
+                    echo "${env.REMOTE_CREDS}"
+                    echo "===================="
+                    sh "printenv | sort"
                 }
             }
         }
@@ -29,6 +36,7 @@ pipeline {
             steps {
                 script {
                     echo "remote ...."
+                    remote.user = credentials('secret-')
                 }
                 sshCommand remote: remote, command: "cd /var"
                 sshCommand remote: remote, command: "node -v"
