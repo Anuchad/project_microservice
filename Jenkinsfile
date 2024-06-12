@@ -46,7 +46,6 @@ pipeline {
             }
             steps {
                 script {
-
                     parameters {
                         string(name: 'PROJECT_NAME', defaultValue: 'Mr Jenkins', description: 'Project Name')
                     }
@@ -54,13 +53,8 @@ pipeline {
                     if(params.PROJECT_NAME != "") {
                       env.GIT_REPO = "${env.GITREPO} ${params.PROJECT_NAME}"
                     }
-                    // Setup Username And Password For SSH
-                    remote.user=env.REMOTE_CREDS_USR
-                    remote.password=env.REMOTE_CREDS_PSW
 
-                    // SSH Command
-                    sshCommand remote: remote, command: "cd /var/www/html && git clone ${env.GIT_REPO}"
-                    //sshCommand remote: remote, command: "git clone ${env.GIT_REPO}"
+                    CONNECT(remote, env, "cd /var/www/html && git clone ${env.GIT_REPO}")
 
                     echo "Clone Git Success"
                 }
