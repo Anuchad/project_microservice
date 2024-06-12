@@ -12,7 +12,7 @@ pipeline {
     }
     environment {
       REMOTE_CREDS = credentials('remote-ssh')
-      GIT_REPO = env.GIT_URL
+      GIT_REPO = "${env.GIT_URL}"
     }
     stages {
         stage('Set Name build') {
