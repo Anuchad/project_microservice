@@ -1,11 +1,18 @@
 pipeline {
     agent any
     stages {
+        stage('Set Name build') {
+            steps {
+               script {
+                    currentBuild.displayName = "Build Test"
+                    currentBuild.description = "Test jenkins for build test."
+                    echo "build success"
+                }
+            }
+        }
         stage('Build') {
             steps {
                 script {
-                    currentBuild.displayName = "The name."
-                    currentBuild.description = "The best description."
                     echo "build success"
                 }
             }
