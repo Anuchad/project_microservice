@@ -7,11 +7,11 @@ def SSHSERVER(command) {
     echo "Remote to server ${remote.host}"
   
     // Setup Username And Password For SSH
-    remote.user=env.REMOTE_CREDS_USR
-    remote.password=env.REMOTE_CREDS_PSW
+    //remote.user=env.REMOTE_CREDS_USR
+    //remote.password=env.REMOTE_CREDS_PSW
 
     // SSH Command
-    sshCommand remote: remote, command: "${command}"
+    //sshCommand remote: remote, command: "${command}"
     //sshCommand remote: remote, command: "git clone ${env.GIT_REPO}"
 }
 
