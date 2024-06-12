@@ -22,7 +22,8 @@ pipeline {
                 script {
                     echo "remote ...."
                 }
-                sshCommand remote: remote, command: "ls"
+                sshCommand remote: remote, command: "cd /var"
+                sshCommand remote: remote, command: "sudo ls -a"
             }
         }
         stage('Build') {
