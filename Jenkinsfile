@@ -3,15 +3,15 @@ def remote = [:]
   remote.host = '165.22.246.53'
   remote.allowAnyHosts = true
 
-def CONNECT(remote, command) {
+def CONNECT(remote, env, command) {
     echo "Remote to server ${remote.host}"
   
     // Setup Username And Password For SSH
-    //remote.user=env.REMOTE_CREDS_USR
-    //remote.password=env.REMOTE_CREDS_PSW
+    remote.user=env.REMOTE_CREDS_USR
+    remote.password=env.REMOTE_CREDS_PSW
 
     // SSH Command
-    //sshCommand remote: remote, command: "${command}"
+    sshCommand remote: remote, command: "${command}"
     //sshCommand remote: remote, command: "git clone ${env.GIT_REPO}"
 }
 
@@ -59,7 +59,7 @@ pipeline {
                     remote.password=env.REMOTE_CREDS_PSW
 
                     // SSH Command
-                    sshCommand remote: remote, command: "cd /var/www/html && git clone ${env.GIT_REPO}"
+                    sshCommand remote: remote, env, command: "cd /var/www/html && git clone ${env.GIT_REPO}"
                     //sshCommand remote: remote, command: "git clone ${env.GIT_REPO}"
 
                     echo "Clone Git Success"
