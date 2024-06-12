@@ -7,6 +7,9 @@ def remote = [:]
 
 pipeline {
     agent any
+    parameters {
+        choice(name: 'CHOICE', choices: ['git version', 'git status', 'git pull'], description: 'Select action')
+    }
     stages {
         stage('Set Name build') {
             steps {
@@ -18,6 +21,11 @@ pipeline {
             }
         }
         stage('Remote SSH') {
+            when {
+              anyOf {
+                expression {params.CHOICE == 'git version'}
+              }
+            }
             steps {
                 script {
                     echo "remote ...."
@@ -27,6 +35,11 @@ pipeline {
             }
         }
         stage('Build') {
+          when {
+              anyOf {
+                expression {params.CHOICE == 'git pull'}
+              }
+            }
             steps {
                 script {
                     echo "build success"
@@ -34,6 +47,11 @@ pipeline {
             }
         }
         stage('Scane') {
+          when {
+              anyOf {
+                expression {params.CHOICE == 'git status'}
+              }
+            }
             steps {
                 script {
                     echo "scane success"
