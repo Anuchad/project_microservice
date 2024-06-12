@@ -21,7 +21,6 @@ pipeline {
                     currentBuild.description = "Test jenkins for build test. action = ${params.CHOICE}"
                     echo "setname success"
                     echo "===================="
-                    echo "${env.REMOTE_CREDS}"
                     echo "${env.GIT_BRANCH}"
                     echo "===================="
                     //sh "printenv | sort"
