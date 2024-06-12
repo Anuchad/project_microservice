@@ -6,7 +6,7 @@ pipeline {
                script {
                     currentBuild.displayName = "Build Test"
                     currentBuild.description = "Test jenkins for build test."
-                    echo "build success"
+                    echo "setname success"
                 }
             }
         }
