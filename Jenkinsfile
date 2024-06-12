@@ -4,7 +4,7 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    bat "git branch"
+                    bat "npm -v"
                     echo "build success"
                 }
             }
