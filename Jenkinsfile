@@ -3,7 +3,7 @@ def remote = [:]
   remote.host = '165.22.246.53'
   remote.allowAnyHosts = true
 
-def SSHSERVER(command) {
+def CONNECT(command) {
     echo "Remote to server ${remote.host}"
   
     // Setup Username And Password For SSH
@@ -74,7 +74,7 @@ pipeline {
             }
             steps {
                 script {
-                    SSHSERVER("cd /var/www/html/project_microservice && git pull")
+                    CONNECT("cd /var/www/html/project_microservice && git pull")
                     echo "Git Pull Success"
                 }
             }
