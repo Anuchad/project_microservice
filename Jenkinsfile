@@ -4,6 +4,7 @@ pipeline {
         stage('Build') {
             steps {
                 script {
+                    bat "git branch"
                     echo "build success"
                 }
             }
