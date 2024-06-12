@@ -59,7 +59,7 @@ pipeline {
                     remote.password=env.REMOTE_CREDS_PSW
 
                     // SSH Command
-                    sshCommand remote: remote, env, command: "cd /var/www/html && git clone ${env.GIT_REPO}"
+                    sshCommand remote: remote, command: "cd /var/www/html && git clone ${env.GIT_REPO}"
                     //sshCommand remote: remote, command: "git clone ${env.GIT_REPO}"
 
                     echo "Clone Git Success"
@@ -74,7 +74,7 @@ pipeline {
             }
             steps {
                 script {
-                    CONNECT(remote, "cd /var/www/html/project_microservice && git pull")
+                    CONNECT(remote, env, "cd /var/www/html/project_microservice && git pull")
                     echo "Git Pull Success"
                 }
             }
