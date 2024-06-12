@@ -36,7 +36,6 @@ pipeline {
             steps {
                 script {
                     echo "remote ...."
-                    remote.user = credentials('secret-')
                 }
                 sshCommand remote: remote, command: "cd /var"
                 sshCommand remote: remote, command: "node -v"
