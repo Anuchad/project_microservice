@@ -31,7 +31,7 @@ pipeline {
         stage('Setup Project') {
             when {
               anyOf {
-                expression {params.COMMAND == 'git version'}
+                expression {params.COMMAND == 'Setup'}
               }
             }
             steps {
