@@ -3,6 +3,18 @@ def remote = [:]
   remote.host = '165.22.246.53'
   remote.allowAnyHosts = true
 
+def SSHSERVER(command) {
+    echo "Remote to server ${remote.host}"
+  
+    // Setup Username And Password For SSH
+    remote.user=env.REMOTE_CREDS_USR
+    remote.password=env.REMOTE_CREDS_PSW
+
+    // SSH Command
+    sshCommand remote: remote, command: "${command}"
+    //sshCommand remote: remote, command: "git clone ${env.GIT_REPO}"
+}
+
 pipeline {
     agent any
     parameters {
@@ -34,7 +46,6 @@ pipeline {
             }
             steps {
                 script {
-                    echo "Remote to server ${remote.host}"
 
                     parameters {
                         string(name: 'PROJECT_NAME', defaultValue: 'Mr Jenkins', description: 'Project Name')
@@ -63,16 +74,7 @@ pipeline {
             }
             steps {
                 script {
-                    echo "Remote to server ${remote.host}"
-  
-                    // Setup Username And Password For SSH
-                    remote.user=env.REMOTE_CREDS_USR
-                    remote.password=env.REMOTE_CREDS_PSW
-      
-                    // SSH Command
-                    sshCommand remote: remote, command: "cd /var/www/html/project_microservice && git pull"
-                    //sshCommand remote: remote, command: "git clone ${env.GIT_REPO}"
-      
+                    SSHSERVER("cd /var/www/html/project_microservice && git pull")
                     echo "Git Pull Success"
                 }
             }
