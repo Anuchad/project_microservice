@@ -17,13 +17,14 @@ pipeline {
         stage('Set Name build') {
             steps {
                script {
-                    currentBuild.displayName = "Build Test"
+                    currentBuild.displayName = "Build Test ${env.BUILD_ID}"
                     currentBuild.description = "Test jenkins for build test. action = ${params.CHOICE}"
                     echo "setname success"
                     echo "===================="
                     echo "${env.REMOTE_CREDS}"
+                    echo "${env.GIT_BRANCH}"
                     echo "===================="
-                    sh "printenv | sort"
+                    //sh "printenv | sort"
                 }
             }
         }
