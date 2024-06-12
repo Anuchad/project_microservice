@@ -23,7 +23,7 @@ pipeline {
                     echo "remote ...."
                 }
                 sshCommand remote: remote, command: "cd /var"
-                sshCommand remote: remote, command: "sudo ls -a"
+                sshCommand remote: remote, command: "node -v"
             }
         }
         stage('Build') {
