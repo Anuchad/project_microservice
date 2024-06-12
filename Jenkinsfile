@@ -8,7 +8,7 @@ def remote = [:]
 pipeline {
     agent any
     parameters {
-        choice(name: 'COMMAND', choices: ['Setup', 'git pull'], description: 'Select Command')
+        choice(name: 'COMMAND', choices: ['Setup', 'Git Pull'], description: 'Select Command')
     }
     environment {
       REMOTE_CREDS = credentials('remote-ssh')
@@ -54,6 +54,28 @@ pipeline {
                     //sshCommand remote: remote, command: "git clone ${env.GIT_REPO}"
 
                     echo "Clone Git Success"
+                }
+            }
+        }
+        stage('Git Pull') {
+            when {
+                anyOf {
+                  expression {params.COMMAND == 'Git Pull'}
+                }
+            }
+            steps {
+                script {
+                    echo "Remote to server ${remote.host}"
+  
+                    // Setup Username And Password For SSH
+                    remote.user=env.REMOTE_CREDS_USR
+                    remote.password=env.REMOTE_CREDS_PSW
+      
+                    // SSH Command
+                    sshCommand remote: remote, command: "cd /var/www/html/project_microservice && git pull"
+                    //sshCommand remote: remote, command: "git clone ${env.GIT_REPO}"
+      
+                    echo "Git Pull Success"
                 }
             }
         }
