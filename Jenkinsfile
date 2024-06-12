@@ -1,8 +1,6 @@
 def remote = [:]
   remote.name = 'root'
   remote.host = '165.22.246.53'
-  remote.user = 'root'
-  remote.password = 'P7As6E44qFWCgLX'
   remote.allowAnyHosts = true
 
 pipeline {
