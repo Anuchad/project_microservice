@@ -4,7 +4,14 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    echo "npm install"
+                    echo "build success"
+                }
+            }
+        }
+        stage('Scane') {
+            steps {
+                script {
+                    echo "scane success"
                 }
             }
         }
