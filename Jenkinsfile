@@ -4,13 +4,17 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                bat "echo 'build'"
+                script {
+                    echo "build"
+                }
             }
         }
 
         stage('Scan') {
             steps {
-                bat "echo 'scane'"
+                script {
+                    echo "scane"
+                }
             }
         }
     }
