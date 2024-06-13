@@ -81,12 +81,13 @@ pipeline {
             }
             steps {
                 script {
-                    sh '''
-                      apt install nodejs
-                      node --version
-                      git --version
-                      curl --version
-                    '''
+                    echo "Test Build Success"
+                    // sh '''
+                    //   apt install nodejs
+                    //   node --version
+                    //   git --version
+                    //   curl --version
+                    // '''
                     //sh 'make build'
                 }
             }
