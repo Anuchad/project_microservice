@@ -2,7 +2,10 @@
 FROM ubuntu:20.04
 
 # Set environment variables to non-interactive
-ENV DEBIAN_FRONTEND=noninteractive
+#ENV DEBIAN_FRONTEND=noninteractive
+ENV container docker
+ENV TZ="Asia/Bangkok"
+RUN apt-get update -y && apt-get dist-upgrade -y
 
 # Update the package list and install dependencies
 RUN apt-get update && apt-get install -y \
