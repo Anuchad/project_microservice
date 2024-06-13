@@ -4,7 +4,11 @@ pipeline {
     stage('Test') {
       steps {
         dir('var') {
-          sh 'node -v'
+          sh '''
+              ls -l
+              node -v
+              git -v
+          '''
         }
       }
     }
