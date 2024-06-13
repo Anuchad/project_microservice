@@ -83,7 +83,7 @@ pipeline {
             }
             steps {
                 script {
-                    sh "node -v"
+                    sh "mvn — version"
                 }
             }
         }
