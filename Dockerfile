@@ -2,10 +2,6 @@ FROM ubuntu:20.04 as base
 
 ### Stage 1 - add/remove packages ###
 
-# Ensure scripts are available for use in next command
-COPY ./container/root/scripts/* /scripts/
-COPY ./container/root/usr/local/bin/* /usr/local/bin/
-
 # - Symlink variant-specific scripts to default location
 # - Upgrade base security packages, then clean packaging leftover
 # - Add S6 for zombie reaping, boot-time coordination, signal transformation/distribution: @see https://github.com/just-containers/s6-overlay#known-issues-and-workarounds
