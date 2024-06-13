@@ -86,7 +86,8 @@ pipeline {
             }
             steps {
                 script {
-                    echo "Testing..."
+                    sh 'apt-get update && apt-get install -y build-essential'
+                    //sh 'make build'
                 }
             }
         }
