@@ -61,7 +61,7 @@ pipeline {
 
                     echo "${env.GIT_REPO}"
                     sh '''
-                        git -v
+                        git --version
                         node -v
                         git branch
                         git pull
