@@ -17,11 +17,7 @@ def CONNECT(remote, env, command) {
 
 pipeline {
     agent {
-        docker {
-            image 'ubuntu:20.04'
-            label 'docker'
-            args '-v /var/run/docker.sock:/var/run/docker.sock'  // กำหนด argument สำหรับ Docker หากจำเป็น
-        }
+        docker { image 'node:20.11.1-alpine3.19' }
     }
     parameters {
         choice(name: 'COMMAND', choices: ['Setup', 'Git Pull', 'Test'], description: 'Select Command')
@@ -87,7 +83,7 @@ pipeline {
             }
             steps {
                 script {
-                    sh "git -v"
+                    sh "node -v"
                 }
             }
         }
