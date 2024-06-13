@@ -6,7 +6,9 @@ pipeline {
         //dir('var') {
           sh '''
               ls -l
-              node -v
+              git status
+              git branch
+              git checkout -b test
               git branch
           '''
         //}
