@@ -18,8 +18,7 @@ def CONNECT(remote, env, command) {
 pipeline {
     agent {
         docker {
-            image 'ubuntu:20.04'
-            args '-v /var/run/docker.sock:/var/run/docker.sock'
+            image 'node:16-alpine'
         }
     }
     parameters {
@@ -86,7 +85,7 @@ pipeline {
             }
             steps {
                 script {
-                    sh 'apt-get update && apt-get install -y build-essential'
+                    sh 'node --version'
                     //sh 'make build'
                 }
             }
