@@ -60,13 +60,19 @@ pipeline {
                     }
 
                     echo "${env.GIT_REPO}"
-
+                    sh '''
+                        git -v
+                        node -v
+                        git branch
+                        git pull
+                        git status
+                    '''
                     //sh "mkdir test"
-                    dir ('test') {
-                        sh "ls -l"
-                        sh "git clone ${env.GIT_REPO}"
-                        sh "ls -l"
-                    }
+                    //dir ('test') {
+                    //    sh "ls -l"
+                    //    sh "git clone ${env.GIT_REPO}"
+                    //    sh "ls -l"
+                    //}
                     //CONNECT(remote, env, "cd /var/www/html && git clone ${env.GIT_REPO}")
 
                     echo "Clone Git Success"
