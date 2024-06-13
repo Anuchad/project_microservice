@@ -13,6 +13,7 @@ RUN apt-get update && apt-get install -y \
     ca-certificates \
     curl \
     git \
+    nodejs \
     && rm -rf /var/lib/apt/lists/*
 
 # Add the Jenkins repository and its GPG key
@@ -25,9 +26,9 @@ RUN apt-get update && apt-get install -y \
 #    && rm -rf /var/lib/apt/lists/*
 
 # Install Node.js (using the NodeSource Node.js 14.x repository)
-RUN curl -fsSL https://deb.nodesource.com/setup_14.x | bash - \
-    && apt-get install -y nodejs \
-    && rm -rf /var/lib/apt/lists/*
+#RUN curl -fsSL https://deb.nodesource.com/setup_14.x | bash - \
+#    && apt-get install -y nodejs \
+#    && rm -rf /var/lib/apt/lists/*
 
 # Expose the Jenkins port
 #EXPOSE 8080
