@@ -19,7 +19,7 @@ pipeline {
     agent {
         docker {
             image 'ubuntu:20.04'
-            label 'ubuntu'
+            args '-v /var/run/docker.sock:/var/run/docker.sock'
         }
     }
     parameters {
