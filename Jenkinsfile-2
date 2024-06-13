@@ -3,11 +3,12 @@ pipeline {
   stages {
     stage('Test') {
       steps {
-        sh '''
+        sh ''''
+          cd /var/www/html
           node --version
           git --version
           curl --version
-        '''
+        ''''
       }
     }
   }
