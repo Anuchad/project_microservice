@@ -17,7 +17,10 @@ def CONNECT(remote, env, command) {
 
 pipeline {
     agent {
-        docker { image 'node:20.11.1-alpine3.19' }
+        docker {
+            image 'ubuntu:20.04'
+            label 'ubuntu'
+        }
     }
     parameters {
         choice(name: 'COMMAND', choices: ['Setup', 'Git Pull', 'Test'], description: 'Select Command')
@@ -83,7 +86,7 @@ pipeline {
             }
             steps {
                 script {
-                    sh "node --version"
+                    sh 'echo "Testing inside Docker container on Ubuntu node"'
                 }
             }
         }
