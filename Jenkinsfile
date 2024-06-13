@@ -62,6 +62,7 @@ pipeline {
                     sh "mkdir test"
                     dir ('test') {
                         sh '''
+                            ls -l
                             git clone ${env.GIT_REPO}
                             ls -l
                         '''
