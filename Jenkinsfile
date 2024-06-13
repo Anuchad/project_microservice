@@ -64,7 +64,7 @@ pipeline {
                         git --version
                         node -v
                         git branch
-                        git pull ${env.GIT_BRANCH}
+                        git pull ${GIT_BRANCH}
                         git status
                     '''
                     //sh "mkdir test"
