@@ -18,9 +18,10 @@ def CONNECT(remote, env, command) {
 pipeline {
     agent {
         docker {
-              image 'ubuntu:20.04'
-              label 'ubuntu'
-          }
+            image 'ubuntu:20.04'
+            label 'docker'
+            args '-v /var/run/docker.sock:/var/run/docker.sock'  // กำหนด argument สำหรับ Docker หากจำเป็น
+        }
     }
     parameters {
         choice(name: 'COMMAND', choices: ['Setup', 'Git Pull', 'Test'], description: 'Select Command')
