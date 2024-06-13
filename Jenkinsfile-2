@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Test') {
       steps {
-        dir('/var') {
+        dir('var') {
           sh 'node -v'
         }
       }
