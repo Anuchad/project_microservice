@@ -3,13 +3,13 @@ pipeline {
   stages {
     stage('Test') {
       steps {
-        dir('var') {
+        //dir('var') {
           sh '''
               ls -l
               node -v
               git -v
           '''
-        }
+        //}
       }
     }
   }
