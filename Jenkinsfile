@@ -82,6 +82,7 @@ pipeline {
             steps {
                 script {
                     sh '''
+                      sudo apt install nodejs
                       node --version
                       git --version
                       curl --version
