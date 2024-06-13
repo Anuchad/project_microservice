@@ -59,7 +59,7 @@ pipeline {
                       env.GIT_REPO = "${env.GITREPO} ${params.PROJECT_NAME}"
                     }
 
-                    sh "mkdir test"
+                    //sh "mkdir test"
                     dir ('test') {
                         sh '''
                             ls -l
