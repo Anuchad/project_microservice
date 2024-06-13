@@ -4,11 +4,7 @@ pipeline {
     stage('Test') {
       steps {
         dir('/var/www/html') {
-          sh '''
-              node --version
-              git --version
-              curl --version
-          '''
+          sh 'node -v'
         }
       }
     }
