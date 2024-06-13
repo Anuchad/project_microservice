@@ -34,7 +34,7 @@ pipeline {
                     echo "===================="
                     echo "${env.GIT_BRANCH}"
                     echo "===================="
-                    //sh "printenv | sort"
+                    sh "printenv | sort"
                 }
             }
         }
@@ -60,13 +60,13 @@ pipeline {
                     }
 
                     echo "${env.GIT_REPO}"
-                    sh '''
-                        git --version
-                        node -v
-                        git branch
-                        git pull ${GIT_BRANCH}
-                        git status
-                    '''
+                    // sh '''
+                    //     git --version
+                    //     node -v
+                    //     git branch
+                    //     git pull ${GIT_BRANCH}
+                    //     git status
+                    // '''
                     //sh "mkdir test"
                     //dir ('test') {
                     //    sh "ls -l"
