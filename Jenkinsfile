@@ -16,11 +16,7 @@ def CONNECT(remote, env, command) {
 }
 
 pipeline {
-    agent {
-        docker {
-            image 'node:16-alpine'
-        }
-    }
+    agent { dockerfile true }
     parameters {
         choice(name: 'COMMAND', choices: ['Setup', 'Git Pull', 'Test'], description: 'Select Command')
     }
@@ -85,7 +81,11 @@ pipeline {
             }
             steps {
                 script {
-                    sh 'node --version'
+                    sh '''
+                      node --version
+                      git --version
+                      curl --version
+                    '''
                     //sh 'make build'
                 }
             }
