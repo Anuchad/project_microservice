@@ -30,25 +30,3 @@ RUN /bin/bash -e /scripts/ubuntu_apt_config.sh && \
     /bin/bash -e /clean.sh && \
     # out of order execution, has a dpkg error if performed before the clean script, so keeping it here,
     apt-get remove --purge --auto-remove systemd --allow-remove-essential -y
-
-# Overlay the root filesystem from this repo
-COPY ./container/root /
-
-
-### Stage 2 --- collapse layers ###
-
-FROM scratch
-COPY --from=base / .
-
-# Use in multi-phase builds, when an init process requests for the container to gracefully exit, so that it may be committed
-# Used with alternative CMD (worker.sh), leverages supervisor to maintain long-running processes
-ENV SIGNAL_BUILD_STOP=99 \
-    S6_BEHAVIOUR_IF_STAGE2_FAILS=2 \
-    S6_KILL_FINISH_MAXTIME=5000 \
-    S6_KILL_GRACETIME=3000
-
-RUN goss -g goss.base.yaml validate
-
-# NOTE: intentionally NOT using s6 init as the entrypoint
-# This would prevent container debugging if any of those service crash
-CMD ["/bin/bash", "/run.sh"]
