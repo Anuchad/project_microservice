@@ -60,6 +60,7 @@ pipeline {
                     }
 
                     echo "${env.GIT_REPO}"
+                    sh "printenv | sort"
                     // sh '''
                     //     git --version
                     //     node -v
