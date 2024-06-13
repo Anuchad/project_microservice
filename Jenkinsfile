@@ -86,7 +86,7 @@ pipeline {
             }
             steps {
                 script {
-                    sh 'echo "Testing inside Docker container on Ubuntu node"'
+                    sh 'echo "Testing..."'
                 }
             }
         }
