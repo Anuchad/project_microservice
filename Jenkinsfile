@@ -59,13 +59,13 @@ pipeline {
                       env.GIT_REPO = "${env.GITREPO} ${params.PROJECT_NAME}"
                     }
 
+                    echo "${env.GIT_REPO}"
+
                     //sh "mkdir test"
                     dir ('test') {
-                        sh '''
-                            ls -l
-                            git clone ${env.GIT_REPO}
-                            ls -l
-                        '''
+                        sh "ls -l"
+                        sh "git clone ${env.GIT_REPO}"
+                        sh "ls -l"
                     }
                     //CONNECT(remote, env, "cd /var/www/html && git clone ${env.GIT_REPO}")
 
