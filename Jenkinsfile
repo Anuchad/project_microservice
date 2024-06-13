@@ -16,9 +16,14 @@ def CONNECT(remote, env, command) {
 }
 
 pipeline {
-    agent any
+    agent {
+        docker {
+              image 'ubuntu:20.04'
+              label 'ubuntu'
+          }
+    }
     parameters {
-        choice(name: 'COMMAND', choices: ['Setup', 'Git Pull'], description: 'Select Command')
+        choice(name: 'COMMAND', choices: ['Setup', 'Git Pull', 'Test'], description: 'Select Command')
     }
     environment {
       REMOTE_CREDS = credentials('remote-ssh')
@@ -70,6 +75,18 @@ pipeline {
                 script {
                     CONNECT(remote, env, "cd /var/www/html/project_microservice && git pull")
                     echo "Git Pull Success"
+                }
+            }
+        }
+        stage('Test Build') {
+            when {
+                anyOf {
+                  expression {params.COMMAND == 'Test'}
+                }
+            }
+            steps {
+                script {
+                    sh "git -v"
                 }
             }
         }
