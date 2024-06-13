@@ -44,17 +44,29 @@ pipeline {
                 expression {params.COMMAND == 'Setup'}
               }
             }
+            input {
+                message "Setup Directoty Name"
+                ok "Yes, we should."
+                submitter "alice,bob"
+                parameters {
+                    string(name: 'PROJECT_NAME', defaultValue: '', description: 'Directoty Name')
+                }
+            }
+            agent { dockerfile true}
             steps {
                 script {
-                    parameters {
-                        string(name: 'PROJECT_NAME', defaultValue: 'Mr Jenkins', description: 'Project Name')
-                    }
-
                     if(params.PROJECT_NAME != "") {
                       env.GIT_REPO = "${env.GITREPO} ${params.PROJECT_NAME}"
                     }
 
-                    CONNECT(remote, env, "cd /var/www/html && git clone ${env.GIT_REPO}")
+                    sh "mkdir test"
+                    dir ('test) {
+                        sh '''
+                            git clone ${env.GIT_REPO}
+                            ls -l
+                        '''
+                    }
+                    //CONNECT(remote, env, "cd /var/www/html && git clone ${env.GIT_REPO}")
 
                     echo "Clone Git Success"
                 }
