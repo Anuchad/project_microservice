@@ -16,7 +16,7 @@ def CONNECT(remote, env, command) {
 }
 
 pipeline {
-    agent { dockerfile true }
+    agent any
     parameters {
         choice(name: 'COMMAND', choices: ['Setup', 'Git Pull', 'Test'], description: 'Select Command')
     }
