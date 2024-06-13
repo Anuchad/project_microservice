@@ -86,7 +86,7 @@ pipeline {
             }
             steps {
                 script {
-                    sh 'echo "Testing..."'
+                    echo "Testing..."
                 }
             }
         }
