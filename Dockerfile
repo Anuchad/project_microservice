@@ -10,6 +10,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 # Update the package list and install dependencies
 RUN apt-get update && apt-get install -y \
     openjdk-11-jdk \
+    sudo \
     wget \
     gnupg2 \
     apt-transport-https \
