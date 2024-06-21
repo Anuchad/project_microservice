@@ -56,5 +56,11 @@ $ docker run \
 > Ref: https://www.jenkins.io/doc/book/installing/docker/
 
 command git
+git add .
+git commit -m "test"
+git tag -a v1.3.0 -m "test push tag command"
+git push origin main --tags
+
+check tag
 > git describe --tags --abbrev=0
 > git ls-remote --tags | awk -F'/' '{print $NF}' | grep -E '^v?[0-9]+\.[0-9]+\.[0-9]+$' | sort -V | tail -n 1
