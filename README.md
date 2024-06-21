@@ -54,6 +54,7 @@ $ docker run \
 ```
 
 > Ref: https://www.jenkins.io/doc/book/installing/docker/
->
+
+command git
 > git describe --tags --abbrev=0
-git ls-remote --tags | awk -F'/' '{print $NF}' | grep -E '^v?[0-9]+\.[0-9]+\.[0-9]+$' | sort -V | tail -n 1
+> git ls-remote --tags | awk -F'/' '{print $NF}' | grep -E '^v?[0-9]+\.[0-9]+\.[0-9]+$' | sort -V | tail -n 1
