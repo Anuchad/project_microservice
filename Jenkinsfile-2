@@ -7,7 +7,7 @@ pipeline {
         //dir('var') {
           script {
             
-            //echo "Event : ${env}"
+            echo "Event : $payload"
   
             //sh '''
                 //ls -l
