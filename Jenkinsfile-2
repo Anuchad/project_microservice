@@ -6,6 +6,7 @@ pipeline {
       steps {
         //dir('var') {
           script {
+
             def payload = currentBuild.rawBuild.request.content
             echo "Received payload: ${payload}"
             
