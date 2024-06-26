@@ -4,11 +4,11 @@ pipeline {
     stage('Test') {
       steps {
         //dir('var') {
+          def branch = env.BRANCH_NAME
+          echo "Building branch: ${branch}"
           sh '''
               ls -l
               git status
-              git branch
-              git checkout -b test
               git branch
           '''
         //}
