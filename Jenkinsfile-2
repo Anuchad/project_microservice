@@ -6,7 +6,9 @@ pipeline {
       steps {
         //dir('var') {
           script {
+            def branch = ref.substringAfterLast('/')
             echo "Received webhook payload: ${repo}"
+            echo "Received webhook ref: ${branch}"
             echo "Event : branch main"
   
             //sh '''
