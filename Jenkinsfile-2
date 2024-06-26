@@ -6,7 +6,7 @@ pipeline {
       steps {
         //dir('var') {
           script {
-            echo "Received webhook payload: ${payload}"
+            echo "Received webhook payload: ${repo}"
             echo "Event : branch main"
   
             //sh '''
