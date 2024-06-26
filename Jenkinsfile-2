@@ -1,9 +1,6 @@
 pipeline {
   //agent { dockerfile true }
   agent any
-  triggers {
-        githubPush()
-  }
   stages {
     stage('branch main') {
       steps {
