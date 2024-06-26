@@ -6,10 +6,10 @@ pipeline {
       steps {
         //dir('var') {
           script {
-             def userInput = input message: 'Enter GitHub webhook payload', parameters: [string(defaultValue: '', description: 'Webhook payload')]
+             def payload = currentBuild.rawBuild.getRequest().getContent()
                     
             // แปลง JSON payload
-            def json = readJSON text: userInput
+            def json = readJSON text: payload
             
             // ดึงข้อมูลที่จำเป็นจาก payload
             def eventType = json['action']
