@@ -1,10 +1,12 @@
 pipeline {
   agent { dockerfile true }
   stages {
-    stage('Test') {
+    stage('test-hookk') {
       steps {
         //dir('var') {
-          echo "Building branch: ${branch}"
+            def branch = ref.split('/')
+            echo "Received webhook payload: ${repo}"
+            echo "Received webhook ref: ${branch[2]}"
 
           sh '''
               ls -l
