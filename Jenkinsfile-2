@@ -1,18 +1,16 @@
 pipeline {
   //agent { dockerfile true }
   agent any
+  triggers {
+        githubPush()
+  }
   stages {
     stage('branch main') {
       steps {
         //dir('var') {
           script {
-             def payload = currentBuild.rawBuild.getRequest().getContent()
-                     
-            // แปลง JSON payload
-            def json = readJSON text: payload
-            
-            // ดึงข้อมูลที่จำเป็นจาก payload
-            def eventType = json['action']
+             def payload = env.BUILD_URL
+            echo "Received webhook payload: ${payload}"
             echo "Event : branch main"
   
             //sh '''
