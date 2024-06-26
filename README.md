@@ -57,6 +57,7 @@ $ git add .
 $ git commit -m "test"
 $ git tag -a v1.3.0 -m "test push tag command"
 $ git push origin main --tags
+
 ..
 
 # check tag
