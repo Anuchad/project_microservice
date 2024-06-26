@@ -1,18 +1,19 @@
 pipeline {
-  //agent { dockerfile true }
-  agent any
+  agent { dockerfile true }
   stages {
     stage('Test') {
       steps {
         //dir('var') {
-          def branch = env.BRANCH_NAME
-          echo "Building branch: ${branch}"
-
-         // sh '''
-             // ls -l
-             // git status
-             // git branch
-          //'''
+          script {
+            def branch = env.BRANCH_NAME
+            echo "Building branch: ${branch}"
+  
+            sh '''
+                ls -l
+                git status
+                git branch
+            '''
+          }
         //}
       }
     }
