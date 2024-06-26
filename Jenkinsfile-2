@@ -6,17 +6,8 @@ pipeline {
       steps {
         //dir('var') {
           script {
-
-            def eventType = env.EVENT_TYPE
-            def repositoryName = env.REPOSITORY_NAME
-            def branchName = env.BRANCH_NAME
             
-            echo "Event type: ${eventType}"
-            echo "Repository name: ${repositoryName}"
-            echo "Branch name: ${branchName}"
-            
-            echo "Event type: ${eventType}"
-            echo "Repository name: ${repositoryName}"
+            echo "Event : ${env}"
   
             sh '''
                 ls -l
