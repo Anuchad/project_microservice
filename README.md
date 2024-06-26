@@ -64,6 +64,7 @@ $ git push origin main --tags
 $ git describe --tags --abbrev=0
 $ git ls-remote --tags | awk -F'/' '{print $NF}' | grep -E '^v?[0-9]+\.[0-9]+\.[0-9]+$' | sort -V | tail -n 1
 
+
 ```
 
 > Ref: https://www.jenkins.io/doc/book/installing/docker/
