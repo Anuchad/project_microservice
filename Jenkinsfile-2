@@ -3,20 +3,34 @@ pipeline {
   agent any
   stages {
     stage('Test') {
+      when {
+          branch 'main'
+      }
       steps {
         //dir('var') {
           script {
             
-            echo "Event : ${payload}"
+            echo "Event : branch main"
   
             //sh '''
                 //ls -l
                 //git status
                 //git branch
             //'''
-            sh "printenv | sort"
+            //sh "printenv | sort"
           }
         //}
+      }
+    }
+    stage('branch hook') {
+      when {
+          branch 'test-hook'
+      }
+      steps {
+          script {
+            
+            echo "Event : branch test-hook"
+          }
       }
     }
   }
