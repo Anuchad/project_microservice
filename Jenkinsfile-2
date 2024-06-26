@@ -5,8 +5,16 @@ pipeline {
       steps {
         //dir('var') {
           script {
-            def branch = env.BRANCH_NAME
-            echo "Building branch: ${branch}"
+            def payload = currentBuild.rawBuild.request.content
+            echo "Received payload: ${payload}"
+            
+            // Parse the JSON payload
+            def json = readJSON text: payload
+            def eventType = json['action']
+            def repositoryName = json['repository']['name']
+            
+            echo "Event type: ${eventType}"
+            echo "Repository name: ${repositoryName}"
   
             sh '''
                 ls -l
