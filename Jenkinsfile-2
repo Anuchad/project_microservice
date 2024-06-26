@@ -1,5 +1,6 @@
 pipeline {
-  agent { dockerfile true }
+  //agent { dockerfile true }
+  agent any
   stages {
     stage('Test') {
       steps {
@@ -7,11 +8,11 @@ pipeline {
           def branch = env.BRANCH_NAME
           echo "Building branch: ${branch}"
 
-          sh '''
-              ls -l
-              git status
-              git branch
-          '''
+         // sh '''
+             // ls -l
+             // git status
+             // git branch
+          //'''
         //}
       }
     }
