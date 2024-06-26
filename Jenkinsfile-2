@@ -9,12 +9,12 @@ pipeline {
             
             //echo "Event : ${env}"
   
-            sh '''
+            //sh '''
                 //ls -l
                 //git status
                 //git branch
-                printenv | sort
-            '''
+            //'''
+            sh "printenv | sort"
           }
         //}
       }
