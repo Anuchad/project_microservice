@@ -6,6 +6,7 @@ pipeline {
         //dir('var') {
           def branch = env.BRANCH_NAME
           echo "Building branch: ${branch}"
+
           sh '''
               ls -l
               git status
