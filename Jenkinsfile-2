@@ -7,12 +7,13 @@ pipeline {
         //dir('var') {
           script {
             
-            echo "Event : ${env}"
+            //echo "Event : ${env}"
   
             sh '''
-                ls -l
-                git status
-                git branch
+                //ls -l
+                //git status
+                //git branch
+                printenv | sort
             '''
           }
         //}
