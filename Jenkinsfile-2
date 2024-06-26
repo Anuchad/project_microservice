@@ -7,13 +7,13 @@ pipeline {
         //dir('var') {
           script {
 
-            def payload = currentBuild.rawBuild.request.content
-            echo "Received payload: ${payload}"
+            def eventType = env.EVENT_TYPE
+            def repositoryName = env.REPOSITORY_NAME
+            def branchName = env.BRANCH_NAME
             
-            // Parse the JSON payload
-            def json = readJSON text: payload
-            def eventType = json['action']
-            def repositoryName = json['repository']['name']
+            echo "Event type: ${eventType}"
+            echo "Repository name: ${repositoryName}"
+            echo "Branch name: ${branchName}"
             
             echo "Event type: ${eventType}"
             echo "Repository name: ${repositoryName}"
