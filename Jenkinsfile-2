@@ -9,7 +9,6 @@ pipeline {
       steps {
         //dir('var') {
           script {
-             def payload = env
             echo "Received webhook payload: ${payload}"
             echo "Event : branch main"
   
