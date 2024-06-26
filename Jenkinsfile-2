@@ -3,13 +3,11 @@ pipeline {
   agent any
   stages {
     stage('branch main') {
-      when {
-          branch 'main'
-      }
       steps {
         //dir('var') {
           script {
-            
+            def payload = currentBuild.rawBuild.request.content
+            echo "Received payload: ${payload}"
             echo "Event : branch main"
   
             //sh '''
