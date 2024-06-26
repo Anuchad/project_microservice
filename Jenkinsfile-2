@@ -6,8 +6,13 @@ pipeline {
       steps {
         //dir('var') {
           script {
-            def payload = currentBuild.rawBuild.request.content
-            echo "Received payload: ${payload}"
+             def userInput = input message: 'Enter GitHub webhook payload', parameters: [string(defaultValue: '', description: 'Webhook payload')]
+                    
+            // แปลง JSON payload
+            def json = readJSON text: userInput
+            
+            // ดึงข้อมูลที่จำเป็นจาก payload
+            def eventType = json['action']
             echo "Event : branch main"
   
             //sh '''
