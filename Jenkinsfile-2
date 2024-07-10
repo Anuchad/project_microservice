@@ -3,6 +3,7 @@ pipeline {
   agent any
   environment {
       BRANCH = ""
+      TEST = ref
     }
   stages {
     stage('check') {
@@ -12,6 +13,7 @@ pipeline {
             BRANCH = "${branch[2]}"
             echo "Received webhook ref: ${branch[2]}"
             echo "env.BRANCH : ${BRANCH}"
+            echo "REF : ${TEST}"
           }
       }
     }
