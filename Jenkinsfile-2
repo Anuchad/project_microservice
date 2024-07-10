@@ -14,7 +14,7 @@ pipeline {
       }
     }
     stage('branch main') {
-      when {
+      when { 
         anyOf {
           expression {BRANCH == 'main'}
         }
