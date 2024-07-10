@@ -9,7 +9,7 @@ pipeline {
                 echo "Received webhook payload: ${repo}"
                 echo "Received webhook ref: ${branch[2]}"
             }
-        //} 
+        //}
       } 
     }
   }
