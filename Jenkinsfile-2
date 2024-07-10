@@ -2,13 +2,13 @@ pipeline {
   //agent { dockerfile true }
   agent any
   environment {
-      BRANCH = "${ref.split('/')[2]}"
+      BRANCH = "${ref ? ref.split('/')[2] : ""}"
   }
   stages {
     stage('Build') {
       steps {
         script {
-          currentBuild.displayName = "Build Repo : ${repo} ${env.BUILD_ID}"
+          currentBuild.displayName = "Build Repo : ${repo ? repo : ""} ${env.BUILD_ID}"
           currentBuild.description = "Commit Branch: ${BRANCH} \n Commit By: ${commitAuthor} \n Commit Message: ${commit_Message} \n Commit Time: ${commitTime}"
         }
       }
