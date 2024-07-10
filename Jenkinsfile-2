@@ -2,12 +2,18 @@ pipeline {
   //agent { dockerfile true }
   agent any
   environment {
-      BRANCH = ${ref.split('/')}
+      BRANCH = ""
     }
   stages {
+    stage('check') {
+       steps {
+        def branch = ref.split('/')
+        BRANCH = "${branch[2]}"
+      }
+    }
     stage('branch main') {
       when { 
-        BRANCH[2] == "main"
+        BRANCH == "main"
       }
       steps {
         //dir('var') {
