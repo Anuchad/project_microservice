@@ -3,7 +3,7 @@ pipeline {
   agent any
   environment {
       BRANCH = ""
-      TEST = ref
+      TEST = "${ref}"
     }
   stages {
     stage('check') {
