@@ -9,13 +9,15 @@ pipeline {
        steps {
           script {
             def branch = ref.split('/')
-            BRANCH = "${branch[2]}"
+            env.BRANCH = "${branch[2]}"
           }
       }
     }
     stage('branch main') {
-      when { 
-        BRANCH == "main"
+      when {
+        anyOf {
+          expression {env.BRANCH == 'main'}
+        }
       }
       steps {
         //dir('var') {
@@ -38,7 +40,9 @@ pipeline {
     }
     stage('branch hook') {
       when {
-          branch 'test-hook'
+        anyOf {
+          expression {env.BRANCH == 'test-hook'}
+        }
       }
       steps {
           script {
