@@ -3,6 +3,9 @@ pipeline {
   agent any
   stages {
     stage('branch main') {
+      when {
+          branch 'main'
+      }
       steps {
         //dir('var') {
           script {
