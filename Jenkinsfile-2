@@ -2,21 +2,9 @@ pipeline {
   //agent { dockerfile true }
   agent any
   environment {
-      BRANCH = ""
-      TEST = "${ref.split('/')[2]}"
-    }
+      BRANCH = "${ref.split('/')[2]}"
+  }
   stages {
-    stage('check') {
-       steps {
-          script {
-            def branch = ref.split('/')
-            BRANCH = "${branch[2]}"
-            echo "Received webhook ref: ${branch[2]}"
-            echo "env.BRANCH : ${BRANCH}"
-            echo "REF : ${TEST}"
-          }
-      }
-    }
     stage('branch main') {
       when {
         anyOf {
@@ -24,22 +12,10 @@ pipeline {
         }
       }
       steps {
-        //dir('var') {
           script {
-            //def branchRef = "${ref}"
-            def branch = ref.split('/')
             echo "Received webhook payload: ${repo}"
-            echo "Received webhook ref: ${branch[2]}"
-            echo "Event : branch main"
-   
-            //sh '''
-                //ls -l
-                //git status
-                //git branch
-            //'''
-            //sh "printenv | sort"
+            echo "Received webhook ref: ${BRANCH}"
           }
-        //}
       }
     }
     stage('branch hook') {
@@ -50,8 +26,7 @@ pipeline {
       }
       steps {
           script {
-            
-            echo "Event : branch test-hook"
+            echo "Received webhook payload: ${repo}"
             echo "Received webhook ref: ${BRANCH}"
           }
       }
