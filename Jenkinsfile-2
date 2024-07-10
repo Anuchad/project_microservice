@@ -2,7 +2,7 @@ pipeline {
   //agent { dockerfile true }
   agent any
   environment {
-      BRANCH = (ref.split('/'))[2]
+      BRANCH = ${(ref.split('/'))[2]}
     }
   stages {
     stage('branch main') {
