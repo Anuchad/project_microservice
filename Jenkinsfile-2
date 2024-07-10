@@ -9,9 +9,9 @@ pipeline {
        steps {
           script {
             def branch = ref.split('/')
-            env.BRANCH = "${branch[2]}"
+            BRANCH = "${branch[2]}"
             echo "Received webhook ref: ${branch[2]}"
-            echo "env.BRANCH : ${env.BRANCH}"
+            echo "env.BRANCH : ${BRANCH}"
           }
       }
     }
