@@ -7,8 +7,10 @@ pipeline {
   stages {
     stage('check') {
        steps {
-        def branch = ref.split('/')
-        BRANCH = "${branch[2]}"
+          script {
+            def branch = ref.split('/')
+            BRANCH = "${branch[2]}"
+          }
       }
     }
     stage('branch main') {
