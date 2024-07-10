@@ -33,6 +33,7 @@ pipeline {
           script {
             
             echo "Event : branch test-hook"
+            echo "Received webhook ref: ${branch[2]}"
           }
       }
     }
