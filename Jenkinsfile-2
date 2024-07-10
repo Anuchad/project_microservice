@@ -8,7 +8,7 @@ pipeline {
                 def branch = ref.split('/')
                 echo "Received webhook payload: ${repo}"
                 echo "Received webhook ref: ${branch[2]}"
-            }
+            } 
         //}
       } 
     }
