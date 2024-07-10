@@ -6,7 +6,7 @@ pipeline {
       REPO = "${repo ? repo : ""}"
       COMMITAUTHOR = "${commitAuthor ? commitAuthor : ""}"
       COMMITMESSAGE = "${commit_Message ? commit_Message : ""}"
-      COMMITTIME = "${commitTime ? commitTime : ""}"
+      COMMITTIME = "${commitTime ? commitTime : ""}" 
   }
   stages {
     stage('Build') {
