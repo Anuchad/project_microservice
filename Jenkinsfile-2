@@ -14,7 +14,7 @@ pipeline {
             echo "Received webhook payload: ${repo}"
             echo "Received webhook ref: ${branch[2]}"
             echo "Event : branch main"
-  
+   
             //sh '''
                 //ls -l
                 //git status
