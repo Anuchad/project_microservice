@@ -9,7 +9,7 @@ pipeline {
       steps {
         script {
           currentBuild.displayName = "Build Repo : ${repo} ${env.BUILD_ID}"
-          currentBuild.description = "Commit Branch: ${BRANCH} \n Commit By: ${commitAuthor} \n Commit Message: ${commitMessage} \n Commit Time: ${commitTime}"
+          currentBuild.description = "Commit Branch: ${BRANCH} \n Commit By: ${commitAuthor} \n Commit Message: ${commit_Message} \n Commit Time: ${commitTime}"
         }
       }
     }
