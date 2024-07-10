@@ -3,7 +3,7 @@ pipeline {
   agent any
   environment {
       BRANCH = ""
-      TEST = "${ref.split('/')}"
+      TEST = "${ref.split('/')[2]}"
     }
   stages {
     stage('check') {
