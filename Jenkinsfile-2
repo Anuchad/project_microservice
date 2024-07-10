@@ -3,13 +3,13 @@ pipeline {
   agent any
   environment {
       BRANCH = "${ref ? ref.split('/')[2] : ""}"
-      REPO = "${repo ? repo : ""}"
+      REPO = "${repo ? repo : "d"}"
   }
   stages {
     stage('Build') {
       steps {
         script {
-          currentBuild.displayName = "Build Repo : ${ref} ${env.BUILD_ID}"
+          currentBuild.displayName = "Build Repo : ${REPO} ${env.BUILD_ID}"
           currentBuild.description = "Commit Branch: ${BRANCH} \n Commit By: ${commitAuthor} \n Commit Message: ${commit_Message} \n Commit Time: ${commitTime}"
         }
       }
