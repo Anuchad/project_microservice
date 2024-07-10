@@ -3,6 +3,7 @@ pipeline {
   agent any
   environment {
       BRANCH = "${ref ? ref.split('/')[2] : ""}"
+      REPO = "${repo ? repo : ""}"
   }
   stages {
     stage('Build') {
