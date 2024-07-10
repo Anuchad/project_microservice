@@ -18,7 +18,7 @@ pipeline {
     stage('branch main') {
       when {
         anyOf {
-          expression {env.BRANCH == 'main'}
+          expression {BRANCH == 'main'}
         }
       }
       steps {
@@ -43,14 +43,14 @@ pipeline {
     stage('branch hook') {
       when {
         anyOf {
-          expression {env.BRANCH == 'test-hook'}
+          expression {BRANCH == 'test-hook'}
         }
       }
       steps {
           script {
             
             echo "Event : branch test-hook"
-            echo "Received webhook ref: ${branch[2]}"
+            echo "Received webhook ref: ${BRANCH}"
           }
       }
     }
