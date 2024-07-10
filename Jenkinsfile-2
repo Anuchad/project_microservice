@@ -4,9 +4,9 @@ pipeline {
   environment {
       BRANCH = "${ref ? ref.split('/')[2] : ""}"
       REPO = "${repo ? repo : ""}"
-      COMMITAUTHOR = "${commitAuthor ? commitAuthor : "}"
-      COMMITMESSAGE = "${commit_Message ? commit_Message : "}"
-      COMMITTIME = "${commitTime ? commitTime : "}"
+      COMMITAUTHOR = "${commitAuthor ? commitAuthor : ""}"
+      COMMITMESSAGE = "${commit_Message ? commit_Message : ""}"
+      COMMITTIME = "${commitTime ? commitTime : ""}"
   }
   stages {
     stage('Build') {
