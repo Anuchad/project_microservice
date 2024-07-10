@@ -1,10 +1,13 @@
 pipeline {
   //agent { dockerfile true }
   agent any
+  environment {
+      BRANCH = (ref.split('/'))[2]
+    }
   stages {
     stage('branch main') {
-      when {
-          branch 'main'
+      when { 
+        BRANCH == "main"
       }
       steps {
         //dir('var') {
