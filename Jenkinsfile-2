@@ -10,7 +10,7 @@ pipeline {
                 echo "Received webhook ref: ${branch[2]}"
             }
         //}
-      }
+      } 
     }
   }
 }
